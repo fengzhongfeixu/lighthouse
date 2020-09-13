@@ -1,0 +1,68 @@
+server:
+  master:
+    port: 8080
+  agent:
+    port: 8081
+  servlet:
+    session:
+      timeout: 1800
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sugon.gsq.lighthouse.db.entity
+
+pagehelper:
+  helperDialect: mysql
+  params: count=countSql
+  reasonable: true
+  supportMethodsArguments: true
+
+spring:
+  application:
+    name: lighthouse
+  freemarker:
+    cache: false
+    request-context-attribute: request
+  jackson:
+    time-zone: GMT+8
+  output:
+    ansi:
+      enabled: ALWAYS
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    jedis:
+      pool:
+        max-active: 50
+        max-wait: 5000
+        max-idle: 20
+        min-idle: 2
+    timeout: 5000
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/lighthouse?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: admin1234@sugon
+    druid:
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      test-on-borrow: true
+
+netty:
+  server:
+    host: 127.0.0.1
+    port: 19999
+  client:
+    reader-idle-time: 0
+    writer-idle-time: 10
+    all-idle-time: 0
+
+logging:
+  level:
+    com.sugon.gsq.om.db.mapper: INFO
+    root: info
